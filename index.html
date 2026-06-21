@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Calculator</title>
+
+<!-- iOS "Add to Home Screen" app behaviour -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Calculator">
+<meta name="theme-color" content="#2c3550">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Calculator<span class="sub">alculator</span></h1>
+      <p class="lead">Enter Salary and pick Total Days for either person (or both) — TEKI CUT, 20% CUT, NET and the Total row update automatically.</p>
+    </header>
+
+    <div class="table-scroll">
+      <table id="calc-table">
+        <thead>
+          <tr>
+            <th class="name-col">Name</th>
+            <th>Salary</th>
+            <th>Total Days</th>
+            <th>TEKI</th>
+            <th>TEKI PLUS</th>
+            <th>TEKI CUT</th>
+            <th>20% CUT</th>
+            <th>NET</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="data-row" data-name="naga" data-teki-rate="480" data-tekiplus-rate="0">
+            <td class="name-col" data-label="Name">naga</td>
+            <td data-label="Salary"><input type="number" class="cell-input salary-input" min="0" step="1" placeholder="0" inputmode="decimal"></td>
+            <td data-label="Total Days"><select class="cell-input days-select"></select></td>
+            <td class="computed teki-cell" data-label="TEKI">0</td>
+            <td class="computed tekiplus-cell" data-label="TEKI PLUS">0</td>
+            <td class="computed teki-cut" data-label="TEKI CUT">0</td>
+            <td class="computed cut20" data-label="20% CUT">0</td>
+            <td class="computed net" data-label="NET">0</td>
+          </tr>
+          <tr class="data-row" data-name="yas" data-teki-rate="1440" data-tekiplus-rate="980">
+            <td class="name-col" data-label="Name">yas</td>
+            <td data-label="Salary"><input type="number" class="cell-input salary-input" min="0" step="1" placeholder="0" inputmode="decimal"></td>
+            <td data-label="Total Days"><select class="cell-input days-select"></select></td>
+            <td class="computed teki-cell" data-label="TEKI">0</td>
+            <td class="computed tekiplus-cell" data-label="TEKI PLUS">0</td>
+            <td class="computed teki-cut" data-label="TEKI CUT">0</td>
+            <td class="computed cut20" data-label="20% CUT">0</td>
+            <td class="computed net" data-label="NET">0</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td class="name-col" data-label="Name">Total</td>
+            <td class="total-salary" data-label="Salary">0</td>
+            <td class="muted" data-label="Total Days">—</td>
+            <td class="total-teki" data-label="TEKI">0</td>
+            <td class="total-tekiplus" data-label="TEKI PLUS">0</td>
+            <td class="total-tekicut" data-label="TEKI CUT">0</td>
+            <td class="total-cut20" data-label="20% CUT">0</td>
+            <td class="total-net" data-label="NET">0</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <button id="reset-btn" type="button">Reset all</button>
+
+    <div class="note">
+      <strong>How this is calculated:</strong>
+      <ul>
+        <li>nagaokyako — <strong>TEKI</strong> = Days × 480, <strong>TEKI PLUS</strong> = 0</li>
+        <li>yasu — <strong>TEKI PLUS</strong> = Days × 980, <strong>TEKI</strong> = Days × 1440 (980 + 460)</li>
+        <li><strong>TEKI CUT</strong> = Salary − TEKI</li>
+        <li><strong>20% CUT</strong> = TEKI CUT × 20%</li>
+        <li><strong>NET</strong> = Salary − 20% CUT</li>
+      </ul>
+      <p>Just type Salary and pick Total Days for either person (or both) — TEKI, TEKI PLUS, TEKI CUT, 20% CUT, NET, and the Total row all fill in automatically.</p>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
